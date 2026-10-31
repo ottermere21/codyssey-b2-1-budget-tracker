@@ -1,0 +1,7 @@
+date,type,category,amount,memo,tags
+2026-10-05,income,salary,3500000,10월 기본급여,"급여,월급"
+2026-10-08,expense,food,18000,친구와 저녁 식사,"외식,저녁"
+2026-10-12,expense,transport,55000,교통카드 충전,교통
+2026-10-18,expense,living,120000,관리비 납부,생활
+2026-10-22,expense,leisure,45000,주말 영화 관람,"문화,취미"
+
