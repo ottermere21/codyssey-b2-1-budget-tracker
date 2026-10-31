@@ -1,0 +1,7 @@
+mission-b2-1.png
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+data/
+*.csv
