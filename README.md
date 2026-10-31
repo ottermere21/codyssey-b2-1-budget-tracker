@@ -33,7 +33,7 @@ Python 표준 라이브러리만을 활용하여 구축된 파일 입출력 기�
 
 1. **`./data/transactions.jsonl`**: 거래 내역 파일 (줄단위 JSON)
    ```json
-   {"id": "TX-000001", "date": "2024-01-15", "type": "expense", "amount": 15000, "category": "food", "memo": "점심", "tags": ["meal"]}
+   {"id": "TX-000001", "date": "2026-10-15", "type": "expense", "amount": 15000, "category": "food", "memo": "점심", "tags": ["meal"]}
    ```
 2. **`./data/categories.jsonl`**: 카테고리 목록 파일
    - 초기 실행 시 기본 카테고리(`food`, `transport`, `living`, `leisure`, `salary`, `etc`)가 자동 등록됩니다.
@@ -43,7 +43,7 @@ Python 표준 라이브러리만을 활용하여 구축된 파일 입출력 기�
    ```
 3. **`./data/budgets.jsonl`**: 월별 예산 파일
    ```json
-   {"month": "2024-01", "amount": 500000}
+   {"month": "2026-10", "amount": 500000}
    ```
 
 ---
@@ -54,7 +54,7 @@ Python 표준 라이브러리만을 활용하여 구축된 파일 입출력 기�
 대화형(`input()`) 프롬프트로 날짜, 타입, 카테고리, 금액, 메모, 태그를 입력받습니다. 잘못된 형식 입력 시 오류 및 힌트를 출력하고 재입력을 요청합니다.
 ```bash
 $ python -m budget_app add
-날짜(YYYY-MM-DD): 2024-01-15
+날짜(YYYY-MM-DD): 2026-10-15
 타입(income/expense): expense
 카테고리: food
 금액(양수): 15000
@@ -68,17 +68,17 @@ $ python -m budget_app add
 - `--limit N`: 조회할 건수 (기본값: 20)
 ```bash
 $ python -m budget_app list --limit 3
-TX-000003 | 2024-01-15 | expense | food | 15000 | 점심 | [meal]
-TX-000002 | 2024-01-14 | income | salary | 3000000 | 급여
-TX-000001 | 2024-01-12 | expense | transport | 20000 | 교통비
+TX-000003 | 2026-10-15 | expense | food | 15000 | 점심 | [meal]
+TX-000002 | 2026-10-14 | income | salary | 3000000 | 급여
+TX-000001 | 2026-10-12 | expense | transport | 20000 | 교통비
 ```
 
 ### 3. 거래 검색 (`search`)
 여러 조건을 조합하여 최신순으로 검색할 수 있습니다.
 - 옵션: `--from`, `--to`, `--category`, `--type`, `--q`, `--tag`
 ```bash
-$ python -m budget_app search --from 2024-01-01 --to 2024-01-31 --type expense --category food
-TX-000003 | 2024-01-15 | expense | food | 15000 | 점심 | [meal]
+$ python -m budget_app search --from 2026-10-01 --to 2026-10-31 --type expense --category food
+TX-000003 | 2026-10-15 | expense | food | 15000 | 점심 | [meal]
 ```
 
 ### 4. 월별 요약 및 예산 점검 (`summary`)
@@ -86,7 +86,7 @@ TX-000003 | 2024-01-15 | expense | food | 15000 | 점심 | [meal]
 - `--month YYYY-MM` (필수)
 - `--top N`: 지출 상위 카테고리 수 (기본값: 3)
 ```bash
-$ python -m budget_app summary --month 2024-01 --top 3
+$ python -m budget_app summary --month 2026-10 --top 3
 총 수입: 3000000원
 총 지출: 215000원
 잔액: 2785000원
@@ -103,11 +103,11 @@ $ python -m budget_app summary --month 2024-01 --top 3
 - 예산 설정: `budget set --month YYYY-MM --amount <금액>`
 - 예산 목록 조회: `budget list`
 ```bash
-$ python -m budget_app budget set --month 2024-01 --amount 500000
-[저장 완료] 2024-01 예산 500000원
+$ python -m budget_app budget set --month 2026-10 --amount 500000
+[저장 완료] 2026-10 예산 500000원
 
 $ python -m budget_app budget list
-- 2024-01: 500000원
+- 2026-10: 500000원
 ```
 
 ### 6. 카테고리 관리 (`category`)
@@ -148,7 +148,7 @@ $ python -m budget_app delete --id TX-000001
 - `--out <경로>` (필수)
 - `--month YYYY-MM` 또는 `--from YYYY-MM-DD --to YYYY-MM-DD` 중 최소 1개 필수
 ```bash
-$ python -m budget_app export --out export.csv --month 2024-01
+$ python -m budget_app export --out export.csv --month 2026-10
 [완료] export.csv (12 records)
 ```
 
@@ -168,7 +168,7 @@ CSV 파일은 **UTF-8 인코딩**과 **헤더 행**을 포함해야 합니다.
 
 | 컬럼명 | 필수 여부 | 형식 | 설명 및 예시 |
 |:---|:---:|:---|:---|
-| `date` | Y | `YYYY-MM-DD` | 거래 날짜 (예: `2024-01-15`) |
+| `date` | Y | `YYYY-MM-DD` | 거래 날짜 (예: `2026-10-15`) |
 | `type` | Y | `income` / `expense` | 거래 유형 |
 | `category` | Y | 문자열 | 등록된 카테고리명 (예: `food`) |
 | `amount` | Y | 양수 정수 | 0보다 큰 금액 (예: `15000`) |
@@ -178,8 +178,8 @@ CSV 파일은 **UTF-8 인코딩**과 **헤더 행**을 포함해야 합니다.
 예시:
 ```csv
 date,type,category,amount,memo,tags
-2024-01-10,income,salary,3000000,1월 급여,main
-2024-01-15,expense,food,15000,점심,meal,lunch
+2026-10-10,income,salary,3000000,10월 급여,main
+2026-10-15,expense,food,15000,점심,meal,lunch
 ```
 
 ---
